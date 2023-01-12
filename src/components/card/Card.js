@@ -18,7 +18,7 @@ const Card = ({weather, date_str, temp_details}) => {
                 <div class="card-top-logo">
                     <img src = {`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
                 </div>
-                <div style ={{marginLeft: 5}}>
+                <div style ={{paddingLeft: 5, paddingRight:5}}>
                     <h1>{month} {day}</h1>
                 </div>
             </div>
