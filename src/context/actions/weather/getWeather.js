@@ -6,14 +6,31 @@ const getWeather = () => (dispatch) =>{
         params: {
             id : 2742032,
             appid: process.env.REACT_APP_API_KEY,
-            cnt : 5,
+            // cnt : 5,
             units: "metric"
         },
     }).then((response) =>{
-        console.log(response.data)
+        var data = {...response.data}
+        
+        data.list = []
+        data.list.push(response.data.list[0])
+        
+        let current_date_obj = new Date(data.list[0].dt_txt);
+        let current_day = current_date_obj.getDate()
+        for (let i = 0;  i < response.data.list.length; i++){
+            let date_obj=new Date(response.data.list[i].dt_txt);
+            let day = date_obj.getDate()
+            if (day != current_day){
+                data.list.push(response.data.list[i])
+                current_day = day
+            }else{
+                continue
+            }
+        }
+        data.list = data.list.slice(0, 5)
         dispatch({
             type: "GET_WEATHER_SUCESS",
-            payload: response.data
+            payload: data
         })
     }).catch(err =>{
         dispatch({

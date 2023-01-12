@@ -9,7 +9,7 @@ const MainView = () => {
     useEffect(()=>{
         getWeather()(weatherDispatch)
     },[])
-   console.log(weatherDataState.weatherData)
+   
     return(
         <div class = "card-grid-container">
             <div class ="card-grid">
