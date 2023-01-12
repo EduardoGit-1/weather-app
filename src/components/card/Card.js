@@ -7,7 +7,7 @@ const Card = ({weather, date_str, temp_details}) => {
     //let icon = svg_icon[weather] ? svg_icon[weather] : "
     let icon = weather.icon
     
-      
+    let weather_description = weather.description.charAt(0).toUpperCase() + weather.description.slice(1)
     var date_obj=new Date(date_str);  
     var month_index =date_obj.getMonth();
     let day = date_obj.getDate()
@@ -21,6 +21,11 @@ const Card = ({weather, date_str, temp_details}) => {
                 <div style ={{paddingLeft: 5, paddingRight:5}}>
                     <h1>{month} {day}</h1>
                 </div>
+            </div>
+            <div>
+                <h2>
+                    {weather_description}
+                </h2>
             </div>
             <div class="card-main">
                 <div>
