@@ -14,6 +14,7 @@ code {
 
 .card-grid-container{
   padding : 3rem 5rem 3rem;
+  margin-top: 3rem;
   /* display: flex; */
   /* flex-direction: column;
   justify-content: center;
@@ -21,13 +22,14 @@ code {
 }
 .card-grid {
   display: grid;
-  gap : 1.5rem;
+  gap : 2rem;
+  row-gap: 3rem;
   justify-content: center;
   grid-template-columns: repeat(5, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-@media screen and (max-width: 663px) {
+@media screen and (max-width: 686px) {
   .card-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 350px));
   }
@@ -37,10 +39,47 @@ code {
   border-radius: 1rem;
   box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba (2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
   transition: all 400ms;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
+
 
 .card:hover{
   box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35rem 1.175rem, rgba (2, 8, 20, 0.08) 0px 0.175rem 0.5rem;
   transform: translateY(-10px);
+}
+
+.card-top-logo{
+  background-color: #61A8E7;
+  border-radius: 1rem;
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -2rem;
+  left: -1rem;
+}
+
+.card-title-div{
+  display:flex;
+  flex-direction: row;
+
+}
+
+.card-main{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px
+}
+
+.card-content-details{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.card-dropdown-button{
+  padding: 8px;
 }

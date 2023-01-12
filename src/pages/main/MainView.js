@@ -15,7 +15,7 @@ const MainView = () => {
             <div class ="card-grid">
             {
                 weatherDataState.weatherData.list && weatherDataState.weatherData.list.map((item) =>(
-                    <Card weather={item.weather[0]}/>
+                    <Card weather={item.weather[0]} date_str = {item.dt_txt} temp_details = {item.main}/>
                 ))
             }
 

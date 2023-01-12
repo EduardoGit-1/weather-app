@@ -7,6 +7,7 @@ const getWeather = () => (dispatch) =>{
             id : 2742032,
             appid: process.env.REACT_APP_API_KEY,
             cnt : 5,
+            units: "metric"
         },
     }).then((response) =>{
         console.log(response.data)
