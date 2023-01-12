@@ -20,9 +20,8 @@ const Card = ({weather}) => {
     let icon = weather.icon
     console.log(icon)
     return(
-        <div>
-
-        <img src = {`http://openweathermap.org/img/wn/${icon}@2x.png"`}/>
+        <div class = "card">
+            <img src = {`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
         </div>
     )
 

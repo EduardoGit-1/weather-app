@@ -9,15 +9,17 @@ const MainView = () => {
     useEffect(()=>{
         getWeather()(weatherDispatch)
     },[])
-   
+   console.log(weatherDataState.weatherData)
     return(
-        <div>
-        {
-            weatherDataState.weatherData  && weatherDataState.weatherData.list.map((item) =>(
-                <Card weather={item.weather[0]}/>
-            ))
-        }*/
+        <div class = "card-grid-container">
+            <div class ="card-grid">
+            {
+                weatherDataState.weatherData.list && weatherDataState.weatherData.list.map((item) =>(
+                    <Card weather={item.weather[0]}/>
+                ))
+            }
 
+            </div>
         </div>
     )
   

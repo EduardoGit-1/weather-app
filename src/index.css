@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card-grid-container{
+  padding : 3rem 5rem 3rem;
+  /* display: flex; */
+  /* flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+}
+.card-grid {
+  display: grid;
+  gap : 1.5rem;
+  justify-content: center;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+@media screen and (max-width: 663px) {
+  .card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 350px));
+  }
+}
+.card {
+  background-color: aliceblue;
+  border-radius: 1rem;
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.15rem 0.5rem, rgba (2, 8, 20, 0.1) 0px 0.075rem 0.175rem;
+  transition: all 400ms;
+  overflow: hidden;
+}
+
+.card:hover{
+  box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35rem 1.175rem, rgba (2, 8, 20, 0.08) 0px 0.175rem 0.5rem;
+  transform: translateY(-10px);
+}

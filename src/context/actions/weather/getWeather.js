@@ -1,7 +1,7 @@
 import axios from '../../helpers/weather-api'
 import {GET_WEATHER} from '../../contants/endpoints'
 const getWeather = () => (dispatch) =>{
-    console.log(process.env.REACT_APP_API_KEY)
+    // console.log(process.env.REACT_APP_API_KEY)
     axios.get(GET_WEATHER, {
         params: {
             id : 2742032,
@@ -9,7 +9,7 @@ const getWeather = () => (dispatch) =>{
             cnt : 5,
         },
     }).then((response) =>{
-        //console.log(response.data)
+        console.log(response.data)
         dispatch({
             type: "GET_WEATHER_SUCESS",
             payload: response.data
