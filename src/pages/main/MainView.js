@@ -2,6 +2,7 @@ import getWeather from '../../context/actions/weather/getWeather'
 import weatherReducer from '../../context/reducer/weatherReducer'
 import {useReducer, useEffect} from 'react'
 import Card from '../../components/card/Card'
+import SomeComponent from '../../components/SomeComponent'
 
 const MainView = () => {
     const [weatherDataState, weatherDispatch] = useReducer(weatherReducer, {weatherData: {}, error: null})
@@ -18,7 +19,7 @@ const MainView = () => {
                     <Card weather={item.weather[0]} date_str = {item.dt_txt} temp_details = {item.main}/>
                 ))
             }
-
+            {/* <SomeComponent/> */}
             </div>
         </div>
     )
