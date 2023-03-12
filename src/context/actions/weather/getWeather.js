@@ -1,12 +1,19 @@
 import axios from '../../helpers/weather-api'
 import {GET_WEATHER} from '../../contants/endpoints'
-const getWeather = () => (dispatch) =>{
+const getWeather = (location) => (dispatch) =>{
     // console.log(process.env.REACT_APP_API_KEY)
+    // dispatch({
+    //     type: "GET_WEATHER_CLEAR",
+    //     payload: true
+    // })
+    dispatch({
+        type: "GET_WEATHER_LOADING",
+        payload: true
+    })
     axios.get(GET_WEATHER, {
         params: {
-            id : 2742032,
+            q : location,
             appid: process.env.REACT_APP_API_KEY,
-            // cnt : 5,
             units: "metric"
         },
     }).then((response) =>{
@@ -28,16 +35,24 @@ const getWeather = () => (dispatch) =>{
             }
         }
         data.list = data.list.slice(0, 5)
+        console.log(data)
         dispatch({
             type: "GET_WEATHER_SUCESS",
             payload: data
         })
     }).catch(err =>{
+        console.log(err)
         dispatch({
             type: "GET_WEATHER_FAIL",
-            payload: err
+            payload: err.response.data.message
+        })
+    }).then(() =>{
+        dispatch({
+            type: "GET_WEATHER_LOADING",
+            payload: false
         })
     })
+
 }
 
 export default getWeather

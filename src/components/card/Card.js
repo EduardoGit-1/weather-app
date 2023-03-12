@@ -1,13 +1,13 @@
-import temp_icon from '../../assets/icons/temp.png'
-import tempMax_icon from '../../assets/icons/max_temp.png'
-import tempMin_icon from '../../assets/icons/min_temp.png'
 import arrow_icon from '../../assets/icons/arrow_down.png'
 import ordinal_suffix_of from '../../context/helpers/get_orginal'
 import {useState, useCallback } from 'react'
 import { useResizeDetector } from 'react-resize-detector';
+import {TbTemperatureMinus, TbTemperaturePlus, TbWind} from "react-icons/tb"
+import {BiWind} from "react-icons/bi"
+import {AiOutlinePercentage} from "react-icons/ai"
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-const Card = ({weather, date_str, temp_details}) => {
+const Card = ({weather, date_str, weatherDetails, wind, humidity}) => {
     let icon = weather.icon
     let weather_description = weather.description.charAt(0).toUpperCase() + weather.description.slice(1)
     var date_obj=new Date(date_str);  
@@ -46,18 +46,45 @@ const Card = ({weather, date_str, temp_details}) => {
             </div>
             <div class="weather-details">
                 <p class="temperature">
-                    {Math.round(temp_details.temp)}<span class="celcius-span">°C</span>
+                    {Math.round(weatherDetails.temp)}<span class="celcius-span">°C</span>
                 </p>
                 <p class="description">
                     {weather_description}
                 </p>
             </div>
-            <div class={`card-main-test ${openState? "open" : ""}`}>
-                <p>just a random test</p>
-                <p>just a random test</p>
-                <p>just a random test</p>
-                <p>just a random test</p>
-                <p>just a random test</p>
+            <div class={`card-main ${openState? "open" : ""}`}>
+                <div class = "card-main-content">
+                    <div class ="card-main-content-details">
+                        <TbTemperaturePlus size={30} color='red'/> 
+                        <div className=''>
+                            <h5>Max temp</h5>
+                            <p>{Math.round(weatherDetails.temp_max)}ºC</p>
+                        </div>
+                    </div>
+                    <div class ="card-main-content-details">
+                        <TbTemperatureMinus size={30} color='blue'/> 
+                        <div className=''>
+                            <h5>Min temp</h5>
+                            <p>{Math.round(weatherDetails.temp_min)}ºC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "card-main-content">
+                    <div class ="card-main-content-details">
+                        <TbWind size={30} color='cyan'/> 
+                        <div className=''>
+                            <h5>Wind</h5>
+                            <p>3 m/s</p>
+                        </div>
+                    </div>
+                    <div class ="card-main-content-details">
+                        <AiOutlinePercentage size={30} color='LightBlue'/> 
+                        <div className=''>
+                            <h5>Humidity</h5>
+                            <p>{weatherDetails.humidity}%</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             {/* <div class="card-main">
                 <div>
